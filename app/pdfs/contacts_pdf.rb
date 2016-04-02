@@ -1,8 +1,9 @@
 
 class ContactsPdf < Prawn::Document
 
-  def initialize(contact)
+  def initialize(contact,current_user)
     @contact = contact
+    @current_user = current_user
     super()
     body_pdf
 
@@ -11,5 +12,6 @@ class ContactsPdf < Prawn::Document
   def body_pdf
     text "Titulo"
     text "#{@contact.name}"
+    image "#{@contact.file.file}"
   end
 end
